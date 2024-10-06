@@ -18,7 +18,10 @@ class PacketSniffer {
 
   public startListening(interfaceName: string, filter: string) {
     const device = Cap.findDevice(interfaceName); // Znajdź interfejs na podstawie IP
-    if (!device) return;
+    if (!device) {
+      console.error("Device not found");
+      return;
+    }
 
     const bufSize = 10 * 1024 * 1024; // Rozmiar bufora
 
@@ -56,4 +59,4 @@ class PacketSniffer {
 }
 
 const packetSniffer = new PacketSniffer();
-packetSniffer.startListening("192.168.88.252", "tcp");
+packetSniffer.startListening("192.168.88.253", "tcp");
